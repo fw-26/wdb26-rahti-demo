@@ -16,11 +16,12 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return { "msg": "Hello local docker"}
+    return { "msg": "Hello"}
 
 @app.get("/api/ip")
 def ip(request: Request):
-    return { "ip": request.client.host}
+    ip = request.headers.get("x-forwarded-for", request.client.host)
+    return { "ip": ip}
 
 
 @app.get("/ip", response_class=HTMLResponse)
