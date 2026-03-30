@@ -21,7 +21,7 @@ def read_root():
 @app.get("/api/ip")
 def ip(request: Request):
     ip = request.headers.get("x-forwarded-for", request.client.host)
-    return { "ip": ip}
+    return { "ip": ip, "client_host": request.client.host, "headers": request.headers}
 
 
 @app.get("/ip", response_class=HTMLResponse)
