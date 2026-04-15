@@ -2,7 +2,7 @@
 services:
   postgres:
     image: postgres:17
-    container_name: postgres-fastapi
+    container_name: postgres-fastapi-sv
     environment:
       POSTGRES_DB: devdb
       POSTGRES_USER: devuser
@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_sv:/var/lib/postgresql/data
 
   fastapi-app:
     build:
@@ -29,4 +29,4 @@ services:
       - DATABASE_URL
 
 volumes:
-  postgres_data:
+  postgres_data_sv:
