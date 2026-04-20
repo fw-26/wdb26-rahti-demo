@@ -48,6 +48,8 @@ def create_schema():
                 dateto DATE,
                 info VARCHAR
             );
+            ALTER TABLE bookings ADD COLUMN IF NOT EXISTS stars INT;
+                    
             -- man kan sätta default också senare:
             -- ALTER TABLE bookings ALTER COLUMN datefrom SET DEFAULT now();
             -- lägg till främmande nyckel senare:
